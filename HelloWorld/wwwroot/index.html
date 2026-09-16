@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daymark | Personal planning</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="auth-gate" id="authGate">
+    <div class="auth-card">
+      <div class="brand auth-brand"><span class="brand-mark">D</span><span>daymark</span></div>
+      <div class="auth-symbol">◉</div>
+      <p class="section-label">Private workspace</p>
+      <h1 id="authTitle">Unlock your planner</h1>
+      <p id="authMessage">Use Face ID, Touch ID, or your device passkey to open Daymark.</p>
+      <button class="auth-button" id="authButton">Unlock with biometrics <span>→</span></button>
+      <p class="auth-help" id="authHelp"></p>
+    </div>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">D</span><span>daymark</span></div>
+      <p class="eyebrow">Your space</p>
+      <nav class="nav-list" aria-label="Primary navigation">
+        <button class="nav-item active" data-view="week"><span class="nav-icon">▦</span>My week</button>
+        <button class="nav-item" data-view="today"><span class="nav-icon">◷</span>Today <span class="nav-count" id="todayCount">0</span></button>
+        <button class="nav-item" data-view="completed"><span class="nav-icon">✓</span>Completed</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="focus-note">
+          <span class="spark">✦</span>
+          <strong>Small steps,<br>clear mind.</strong>
+          <p>Make room for what matters today.</p>
+        </div>
+        <div class="profile"><div class="avatar">A</div><div><strong>My workspace</strong><span>Personal plan</span></div><span class="more">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><p class="date-kicker" id="topDate"></p><h1>Good morning, Ashutosh <span>✦</span></h1></div>
+        <button class="add-button" id="openModal"><span>＋</span> Add task</button>
+      </header>
+
+      <section class="stats-row" aria-label="Task summary">
+        <article class="stat-card coral"><div class="stat-icon">◎</div><div><span>Today</span><strong id="statToday">0 tasks</strong></div><div class="stat-ring" id="todayRing">0%</div></article>
+        <article class="stat-card mint"><div class="stat-icon">↗</div><div><span>This week</span><strong id="statWeek">0 tasks</strong></div><div class="stat-trend">↗ <b>on track</b></div></article>
+        <article class="stat-card yellow"><div class="stat-icon">✧</div><div><span>Completed</span><strong id="statCompleted">0 tasks</strong></div><div class="stat-trend">Keep going</div></article>
+      </section>
+
+      <div class="content-grid">
+        <section class="calendar-panel panel">
+          <div class="panel-heading"><div><p class="section-label">Your calendar</p><h2 id="monthTitle"></h2></div><div class="month-controls"><button class="icon-button" id="prevMonth" aria-label="Previous month">‹</button><button class="today-button" id="goToday">Today</button><button class="icon-button" id="nextMonth" aria-label="Next month">›</button></div></div>
+          <div class="weekdays"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span></div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </section>
+
+        <aside class="agenda-panel panel">
+          <div class="panel-heading agenda-heading"><div><p class="section-label">Selected day</p><h2 id="selectedDate"></h2></div><span class="day-badge" id="selectedBadge"></span></div>
+          <div class="agenda-list" id="agendaList"></div>
+          <button class="quick-add" id="quickAdd"><span>＋</span> Add something</button>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <form class="task-modal" id="taskForm">
+      <button type="button" class="modal-close" id="closeModal" aria-label="Close">×</button>
+      <p class="section-label">New task</p><h2>Make it happen.</h2><p class="modal-intro">What would you like to move forward?</p>
+      <label>Task name<input id="taskTitle" name="title" placeholder="e.g. Sketch out project ideas" required maxlength="80"></label>
+      <div class="form-row"><label>Date<input id="taskDate" name="date" type="date" required></label><label>Time <span class="optional">optional</span><input id="taskTime" name="time" type="time"></label></div>
+      <label>Priority<select id="taskPriority" name="priority"><option value="low">Low key</option><option value="medium" selected>Worth doing</option><option value="high">Important</option></select></label>
+      <button class="save-button" type="submit">Create task <span>→</span></button>
+    </form>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
